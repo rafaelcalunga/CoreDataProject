@@ -20,9 +20,9 @@ extension Movie {
     @NSManaged public var title: String
     @NSManaged public var director: String
     
-    public var wrappedTitle: String {
+    /*public var wrappedTitle: String {
         title ?? "Unknown Title"
-    }
+    }*/
 }
 
 extension Movie : Identifiable {

@@ -19,7 +19,7 @@
     </entity>
     <elements>
         <element name="Movie" positionX="-63" positionY="-18" width="128" height="88"/>
-        <element name="Wizard" positionX="-54" positionY="18" width="128" height="58"/>
         <element name="Ship" positionX="-54" positionY="9" width="128" height="73"/>
+        <element name="Wizard" positionX="-54" positionY="18" width="128" height="58"/>
     </elements>
 </model>

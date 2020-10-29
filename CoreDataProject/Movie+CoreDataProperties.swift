@@ -17,12 +17,16 @@ extension Movie {
     }
 
     @NSManaged public var year: Int16
-    @NSManaged public var title: String
-    @NSManaged public var director: String
+    @NSManaged public var title: String?
+    @NSManaged public var director: String?
     
-    /*public var wrappedTitle: String {
+    public var wrappedTitle: String {
         title ?? "Unknown Title"
-    }*/
+    }
+    
+    public var wrappedDirector: String {
+        director ?? "Unknown Director"
+    }
 }
 
 extension Movie : Identifiable {

@@ -15,7 +15,13 @@ struct DynamicallyFilteringView: View {
     
     var body: some View {
         VStack {
-            FilteredList(filter: titleFilter)
+            FilteredList(filterKey: "title", filterValue: self.titleFilter) { (movie: Movie) in
+                VStack(alignment: .leading) {
+                    Text("\(movie.wrappedTitle)")
+                        .font(.headline)
+                    Text("\(movie.wrappedDirector)")
+                }
+            }
 
             Button("Add Examples") {
                 let avatar = Movie(context: self.context)

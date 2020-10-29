@@ -6,24 +6,29 @@
 //
 
 import SwiftUI
+import CoreData
 
-struct FilteredList: View {
+struct FilteredList<T: NSManagedObject, Content: View>: View {
     
-    var fetchRequest: FetchRequest<Movie>
+    var fetchRequest: FetchRequest<T>
     
-    var movies: FetchedResults<Movie> { fetchRequest.wrappedValue }
+    var lines: FetchedResults<T> { fetchRequest.wrappedValue }
+    
+    // this is our content closure; we'll call this once for each item in the list
+    let content: (T) -> Content
     
     var body: some View {
-        List(movies, id: \.self) { movie in
-            VStack(alignment: .leading) {
-                Text("\(movie.wrappedTitle)")
-                Text("\(movie.wrappedDirector)")
-                    .foregroundColor(.secondary)
-            }
+        List(lines, id: \.self) { line in
+            self.content(line)
         }
     }
     
-    init(filter: String) {
-        fetchRequest = FetchRequest<Movie>(entity: Movie.entity(), sortDescriptors: [], predicate: NSPredicate(format: "title CONTAINS[c] %@", filter))
+    init(filterKey: String, filterValue: String, @ViewBuilder content: @escaping (T) -> Content) {
+        fetchRequest = FetchRequest<T>(
+            entity: T.entity(),
+            sortDescriptors: [],
+            predicate: NSPredicate(format: "%K CONTAINS[c] %@", filterKey, filterValue))
+        
+        self.content = content
     }
 }

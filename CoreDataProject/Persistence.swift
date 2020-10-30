@@ -17,6 +17,27 @@ struct PersistenceController {
             let newItem = Wizard(context: viewContext)
             newItem.name = "Wizard \(i)"
         }
+        
+        let candy1 = Candy(context: viewContext)
+        candy1.name = "Mackintosh's Mack Toffee"
+        
+        let candy2 = Candy(context: viewContext)
+        candy2.name = "Eat-More"
+        
+        let candy3 = Candy(context: viewContext)
+        candy3.name = "Smarties"
+        
+        let canada = Country(context: viewContext)
+        canada.shortName = "CA"
+        canada.fullName = "Canada"
+        canada.addToCandy(candy1)
+        canada.addToCandy(candy2)
+        
+        let usa = Country(context: viewContext)
+        usa.shortName = "USA"
+        usa.fullName = "United States"
+        usa.addToCandy(candy3)
+        
         do {
             try viewContext.save()
         } catch {

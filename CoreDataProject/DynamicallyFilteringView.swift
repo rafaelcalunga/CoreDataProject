@@ -12,10 +12,14 @@ struct DynamicallyFilteringView: View {
     
     @State private var titleFilter = "A"
 
+    private let sortDescriptors: [NSSortDescriptor] = [
+        NSSortDescriptor(keyPath: \Movie.title, ascending: true),
+        NSSortDescriptor(keyPath: \Movie.director, ascending: true)
+    ]
     
     var body: some View {
         VStack {
-            FilteredList(filterKey: "title", filterValue: self.titleFilter) { (movie: Movie) in
+            FilteredList(filterKey: "title", filterValue: self.titleFilter, sortDescriptors: sortDescriptors) { (movie: Movie) in
                 VStack(alignment: .leading) {
                     Text("\(movie.wrappedTitle)")
                         .font(.headline)

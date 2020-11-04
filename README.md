@@ -12,5 +12,6 @@ I learned how to:
 - Filter @FetchRequest using NSPredicate
 - Dynamically filter @FetchRequest with SwiftUI
 - One-to-many relationships with Core Data, SwiftUI, and @FetchRequest
+- Create a generic list view to be used with any CoreData entity
 
 This app was made using the course **100 Days of SwiftUI** from [Hacking With Swift](https://www.hackingwithswift.com/100/swiftui/)
